@@ -1,16 +1,18 @@
-## FUNCTION FOR CALCULATING THE INVERSE OF A MATRIX, CACHING ITS VALUE
+## FUNCTION FOR CALCULATING THE INVERSE OF A MATRIX AND CACHING ITS VALUE
 
-## How to use these functions:
-## a <- makeCacheMatrix(x)    (where "x" is the matrix to be inverted and
-##                             this function should be called only once or when "x" changes)
+## These functions were created based on the example given in the 'programming assignment 2',
+## substituting the 'mean' calculations for a 'inverse matrix' calculation
+##
+## These functions must be used in 2 steps:
+## a <- makeCacheMatrix(x)    (where "x" is the matrix to be inverted) 
+##                            (this function should be called only once or when "x" changes)
 ##
 ## b <- cacheSolve(a)         (this function should be called whenever the inverse of "x" is necessary)
 ##
-## variable 'b' will contain the inverse of 'x'
+## Expected result: variable 'b' must contain the inverse of matrix 'x'
 
-
-## This function creates a list with 4 elements of class "function" 
-## and a variable ("m") that keeps the cached value of the inversed matrix
+# Function makeCacheMatrix cretes an environment and a  variable 'm' that keeps the cached value of the inversed matrix
+# and returns a list with 4 elements of class 'function', which are used in the cacheSolve function
 makeCacheMatrix <- function(x = matrix()) {
       m <- NULL
       set <- function(y) {
@@ -28,9 +30,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## This function checks if the value of the inversed matrix is already in cache
 ## If it is in cache, returns de value
-## otherwise, calculates the value
+## otherwise, first calculates and then returns the value of the inversed matrix
 cacheSolve <- function(x, ...) {
-      ## Return a matrix that is the inverse of 'x'
       m <- x$getInv()
       if(!is.null(m)) {
             message("getting cached data")
